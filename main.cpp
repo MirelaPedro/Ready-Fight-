@@ -1,21 +1,33 @@
-// pegar uma lista dos nomes dos jogadores de um arquivo txt externo
+// pegar uma lista dos names dos jogadores de um arquivo txt externo
 
 #include "player.hpp"
-#inclde <vector>
-
-// prototypes - depois transferir para outro arquivo
-vector <Player> readArq(string name);
-void createPlayer();
+#include <vector>
+#include <fstream>
 
 int main()
 {
     srand(time(0));
-    //Player pl("Olaf", 50, 8, 3);
+    vector <string> names;
 
-    vector <string> nomes = {"Olaf", "Rapunzel", "Damian"};
+    // LENDO O ARQUIVO DE NOMES
+    ofstream fp;
+    fp.open("names.txt");
+
+    if(fp.is_open() == false) {
+        cout << "Erro, o arquivo não abriu." << endl;
+        return false;
+    }
+
+    for(size_t i=0; i < names.size(); i++){
+        getline(fp, names[i]);
+    }
+
+    fp.close();
+
+    // CRIANDO OS PLAYERS
     vector <Player> players;
 
-    for(size_t i = 0; nomes.size(); i++){
+    for(size_t i = 0; names.size(); i++){
         Player novo(names.at(i), rand()%50+1, rand()%5+1, rand()%20+1);
         players.push_back(novo);
     }
@@ -23,6 +35,25 @@ int main()
     for(size_t i = 0; players.size(); i++){
         cout << "PLAYER: " << players.at(i).m_name << " - Life: " <<   players.at(i).GetName() << " - Attack: " <<   players.at(i).GetAttack() << " - Defense: " <<   players.at(i).GetDefense() << endl; 
     }
+
+    // LUTANDO
+    while(players.size() > 1){
+        int player0 = rand()%players.size();
+        int player1 = rand()%players.size();
+
+        bool sucess = players.at(player0).Attack(players.at(player1));
+
+        if(players.at(player1) <= 0){
+            cout << players.at(player1).GetName() << " morreu! " << endl;
+            players.erase(player1);
+        }
+    }
+
+    if(players.size() == 1){
+        cout << "O vencedor foi: " << players.at(player1).GetName() << endl;
+    } else {cout << "Ocorreu um erro!" << endl;}
+
+    return 0;
 }
 
 
