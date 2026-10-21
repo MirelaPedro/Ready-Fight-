@@ -1,0 +1,51 @@
+50
+1. Arcanocó
+2. Merlin das Penas
+3. Feitiçocó
+4. Grimório de Crista
+5. Galomante
+6. Bico Arcano
+7. Mago Garnisé
+8. Feiticeiro Plumado
+9. Cocoricórnio
+10. Esporão Místico
+11. Oráculo do Poleiro
+12. Necrogalo
+13. Galadriel das Plumas
+14. Fênix Arcana
+15. Dragão de Crista
+16. Runebico
+17. Ametista Alada
+18. Galo do Éter
+19. Cristal Cocoricó
+20. Mestre dos Sigilos
+21. Pluma Astral
+22. Bruxo do Milharal
+23. Sábio Esporão
+24. Relâmpago Rúnico
+25. Galáctico Arcano
+26. Guardião do Mana
+27. Galo Elemental
+28. Encantador de Grãos
+29. Bico Dimensional
+30. Selo das Sete Penas
+31. Feitiço Carmesim
+32. Invocagalos
+33. Arquimago Penudo
+34. Esporão do Infinito
+35. Galo das Sombras
+36. Místico de Obsidiana
+37. Círculo Plumado
+38. Galo Transmutador
+39. Orbe de Crista
+40. Feiticeiro do Caos
+41. Pena Encantada
+42. Mago do Trovão
+43. Grifo Galináceo
+44. Galo Astral
+45. Alquimista do Poleiro
+46. Bico de Safira
+47. Senhor dos Portais
+48. Cocoricó Cósmico
+49. Galo Rúnico
+50. Eclipse Encantado
