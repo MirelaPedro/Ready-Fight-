@@ -35,6 +35,8 @@
 
 11 - se continuar com o armamento, é possível adicionar uma porcentagem de precisão a mais ou a menos caso o personagem possuir um eq2uipamento melhor ou pior ou não possuir equipamento 
 
+12 - A cada x rodadas um player pode entrar aleatoriamente na defesa do colega
+
 
 ## Ready? Fight!
 opção 1: (*precisariamos mudar o nome*)
