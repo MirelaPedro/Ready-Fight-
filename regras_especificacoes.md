@@ -1,21 +1,38 @@
 ## DESCRITIVO DAS IDEIAS E COMO FAZER :
 1 - Tipos de ataque: ataque vira uma classe que possui nome, categoria (que também pode ser uma classe), fraqueza (uma oposta a sua classe), valor máximo e valor mínimo
+
 2 - Defesa também pode possuir tipo, que combate com o tipo do ataque
+
 3 - Tipos de personagens: os personagens possuem classes que podem ser mais eficientes contra outras ou menos eficientes
+
 4 - Equipes: (duas equipes ou mais?)
+
  	4.1 - se for duas equipes, elas seguem os ataques em turnos em que um personagem é escolhido para atacar por vez
+	
 	4.2 - se for mais equipes, as equipes se atacam por turnos (como esta agora, mas com equipes) ou tipo eliminatória?
+	
 	4.3 - a equipe que restar é a vencedora
+	
 5 - Opção de fugir: alguns personagens possuem uma caracerística de fuga que os possibilitem tentar fugir da batalha 
+
 	5.1 - fugir e a batalha entre equipes continuar e mesmo que a equipe seja "eliminada", por ter fugido, ainda continua no jogo porque ainda resta um personagem
+	
 6 - Usuário reais: ao invés de ser tudo no aleatório: os usuários realmente podem jogar:
+
 	6.1 - Cada usuário é um personagem
+	
 	6.2 - Cada usuário comanda uma equipe
+	
 	6.3 - Desse jeito deve haver uma quantidade máxima de players 
+	
 7 - Precisão de ataque: Pode haver um rand no ataque e na defesa que apontam a precisão (% do valor de ataque que pode ser utilizado)
+
 8 - Pode ser um RPG do tipo, a equipe de jogadores que precisam enfrentar um chefão final (ou pode ser escrita uma história em cima desse jogo)
+
 9 - respostas temáticas e se for a primeira opção(aleatórias)
+
 10 - Chance de encontro aleatório de armamento a cada X rodadas/lutas que podem ser equipados ou não (pode ter uma opção de adicionar um aumento dessa chance se o personagem que necessita de armamento para lutar, perder o armamento)
+
 11 - se continuar com o armamento, é possível adicionar uma porcentagem de precisão a mais ou a menos caso o personagem possuir um eq2uipamento melhor ou pior ou não possuir equipamento 
 
 
