@@ -51,42 +51,39 @@ class Galo {
             }};
             /*Ataques específicos para galos Heróis*/
             array <pair<string, int>, 4> AtaquesDiferenciados = {{
-                {"Bicada Fatal", 70},
-                {"Arranhão Profundo", 45},
-                {"Batida de Asa Lendária", 30},
-                {"Investida Suprema", 60}
+                {"Bicada Fatal", 100},
+                {"Arranhão Profundo", 100},
+                {"Batida de Asa Lendária", 100},
+                {"Investida Suprema", 100}
             }};
             
             /*
-            if (m_attack > opponent.m_defense) {
+            */
 
-                //premissa 2: subtrair o dano (ataque - defesa) da vida do oponente
-                float damage = m_attack - opponent.m_defense;
-                opponent.SetLife(opponent.GetLife() - damage);
-                if(MaldicaodoGalo(opponent)) { //verifica se o ataque crítico foi ativado
-                return false;
-                }
-                else {
-                    return true;
-                }
-                
-            }
-            else {
-                return false;
-            }*/
-
-            //premissa 1: verificar se o galo é Herói ou não
+            //premissa 1: verificar se o galo é Herói ou não para decidir o tipo de ataque utilizado
             if (m_tipe == "Heroi") {
                 srand(time(0));
                 int ataque = rand() % 4;
-                cout << "Ataque utilizado: " << AtaquesDiferenciados[ataque].first << endl << "Precisão do ataque: " << AtaquesDiferenciados[ataque].second;
+                cout << "Ataque utilizado: " << AtaquesDiferenciados[ataque].first << endl << "Precisão do ataque: " << AtaquesDiferenciados[ataque].second << "%" << endl;
                 
             }
             else {
-
+                srand(time(0));
+                int ataque = rand() % 4;
+                cout << "Ataque utilizado: " << Ataques[ataque].first << endl << "Precisão do ataque: " << Ataques[ataque].second << "%" << endl;
             }
-            
-            
+
+            //premissa 2: adicionar os booster de ataque ou defesa 
+
+            //premissa 3: verificar se o ataque do galo é maior que a defesa do oponente
+            if (m_attack > opponent.m_defense) {
+                //premissa 4: subtrair o dano (ataque - defesa) da vida do oponente
+                float damage = m_attack - opponent.m_defense;
+                opponent.SetLife(opponent.GetLife() - damage);                
+            }
+            else {
+                return false;
+            }
         }
 
         /*Ataque crítico reservado apenas para Heróis*/
