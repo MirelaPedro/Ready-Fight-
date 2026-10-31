@@ -313,12 +313,9 @@ bool quebrou(Galo player, vector <Armamento> armas){
                 }
             }
         }
-
     }
 
-    else{
-        return false;
-    }
+    return false;
 }
 
 //-----------FUNÇÕES EXTRAS DE AUXILIO-----------
