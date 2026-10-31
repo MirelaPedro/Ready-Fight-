@@ -1,50 +1,100 @@
+heroi
 Thor Bico de Ferro
+normal
 Apocalipto
+heroi
 Rei Penacho
+normal
 Fúria Escarlate
+normal
 Galácticus
+normal
 Brutalhão Supremo
+normal
 Imperador Cocoricó
+normal
 Sombra de Fogo
+normal
 Trovão Dourado
+normal
 Lorde Esporão
+heroi
 Ragnarok
+normal
 Bico de Titânio
+normal
 General Penugem
+normal
 César das Plumas
+normal
 Tempestade Rubra
+normal
 Aço Indomável
+normal
 Draco Penoso
+heroi
 Rei da Última Pena
+normal
 Colosso Garnisé
+normal
 Magnus Esporão
+heroi
 Fênix de Sangue
+normal
 Terror da Madrugada
+normal
 Bico do Apocalipse
+normal
 Valquíria Plumada
+heroi
 Galo Invencível
+normal
 Exterminador de Milho
+normal
 Cavaleiro Escarlate
+normal
 Supremacia Alada
+normal
 Titã Cocoricó
+normal
 Rei dos Sete Galinheiros
+normal
 Furacão de Penas
+normal
 Soberano Carmesim
+normal
 Lâmina de Ouro
+normal
 Predador do Poleiro
+normal
 Senhor da Arena
+heroi
 Galo Ômega
+normal
 Esporão Celestial
+normal
 Vingador de Crista
+normal
 Dominus Plumarius
+heroi
 O Último Cocorico
+normal
 Barão da Destruição
+covarde
 Ferro-Velho Imperial
+normal
 Pena de Diamante
+normal
 Ciclone Rubro
+judas
 Rei da Penumbra
+normal
 Gladiador Galináceo
+normal
 Bico Supremo
+normal
 Conquistador Alado
+normal
 Sangue de Dragão
+heroi
 O Indomável

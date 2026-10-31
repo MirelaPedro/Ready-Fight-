@@ -1,50 +1,100 @@
+normal
 Belzebico
+normal
 Satanocó
+heroi
 Lúcifer de Crista
+normal
 Abissal de Penas
+normal
 Demônio Garnisé
+normal
 Azarath Plumado
+normal
 Ceifador do Poleiro
+normal
 Bico do Inferno
+normal
 Maldição Escarlate
+judas
 Galo Profano
+normal
 Rei das Trevas
+normal
 Pena Amaldiçoada
+normal
 Dreadcó
+heroi
 Asmodeu Alado
+normal
 Pesadelo Penoso
+normal
 Galo do Submundo
+normal
 Abutre Carmesim
+normal
 Esporão Maldito
+normal
 Diabo de Mil Penas
+normal
 Cripta Cocoricó
+normal
 Sombracó
+normal
 Galo da Ruína
+normal
 Mestre da Desgraça
+covarde
 Bico de Enxofre
+normal
 Astaroth Plumado
+normal
 Galo Espectral
+normal
 Tirano Abissal
+normal
 Lorde do Vazio
+normal
 Caveira de Crista
+normal
 Sussurro Sombrio
+normal
 Príncipe da Agonia
+judas
 Galo Necromante
+normal
 Malphas de Penas
+normal
 Chama Infernal
+normal
 Pestilência Alada
+normal
 Galo Sem Alma
+normal
 Corvo de Crista
+normal
 Flagelo Noturno
+normal
 Bico Macabro
+heroi
 Rei dos Condenados
+normal
 Esporão Fantasma
+normal
 Abismo Rubro
+normal
 Cocoricó Maldito
+normal
 Galo do Caos
+normal
 Sombra Devoradora
+normal
 Carrasco Plumado
+normal
 Morte de Crista
+covarde
 Lamento Infernal
+normal
 Galo Apodrecido
+normal
 O Inominável

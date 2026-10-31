@@ -48,11 +48,12 @@ class Galo {
         Armamento m_arma;
     
     public:         
-        Galo(string name, float life, float attack, float defense) {
+        Galo(string name, string type, float life, float attack, float defense) {
             m_name = name;
             m_life = life;
             m_attack = attack;
             m_defense = defense;
+            m_tipe = type;
         }
 
         string GetName() { return m_name; }
@@ -98,8 +99,8 @@ class Galo {
             else{defesaTotal = m_defense;}
 
             //precisao de ataque e defesa
-            ataqueTotal = ataqueTotal*Ataques[ataque].second/100;
-            defesaTotal = defesaTotal*rand()/100/100;
+            ataqueTotal = ataqueTotal*Ataques[ataque].second/100.0;
+            defesaTotal = defesaTotal*(rand()%100)/100.0;
             
 
             //premissa 3: verificar se o ataque do galo é maior que a defesa do oponente
@@ -115,7 +116,7 @@ class Galo {
         }
 
         /*Ataque crítico reservado apenas para Heróis*/
-        bool MaldicaoDoGalo(vector <Galo> *timeAtacante,vector <int> Vitimas) {
+        bool MaldicaoDoGalo(vector <Galo> *timeAtacante, vector <int> Vitimas) {
             if(m_tipe == "Heroi") {
 
                 int chance = rand() % 60;

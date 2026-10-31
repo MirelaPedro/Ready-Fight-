@@ -1,50 +1,100 @@
+normal
 Arcanocó
+normal
 Merlin das Penas
+normal
 Feitiçocó
+normal
 Grimório de Crista
+heroi
 Galomante
+normal
 Bico Arcano
+normal
 Mago Garnisé
+normal
 Feiticeiro Plumado
+normal
 Cocoricórnio
+normal
 Esporão Místico
+normal
 Oráculo do Poleiro
+judas
 Necrogalo
+normal
 Galadriel das Plumas
+heroi
 Fênix Arcana
+normal
 Dragão de Crista
+normal
 Runebico
+normal
 Ametista Alada
+normal
 Galo do Éter
+normal
 Cristal Cocoricó
+normal
 Mestre dos Sigilos
+normal
 Pluma Astral
+covarde
 Bruxo do Milharal
+normal
 Sábio Esporão
+normal
 Relâmpago Rúnico
+heroi
 Galáctico Arcano
+normal
 Guardião do Mana
+normal
 Galo Elemental
+normal
 Encantador de Grãos
+normal
 Bico Dimensional
+normal
 Selo das Sete Penas
+normal
 Feitiço Carmesim
+judas
 Invocagalos
+normal
 Arquimago Penudo
+normal
 Esporão do Infinito
+normal
 Galo das Sombras
+normal
 Místico de Obsidiana
+normal
 Círculo Plumado
+covarde
 Galo Transmutador
+normal
 Orbe de Crista
+normal
 Feiticeiro do Caos
+normal
 Pena Encantada
+normal
 Mago do Trovão
+normal
 Grifo Galináceo
+heroi
 Galo Astral
+normal
 Alquimista do Poleiro
+normal
 Bico de Safira
+normal
 Senhor dos Portais
+judas
 Cocoricó Cósmico
+normal
 Galo Rúnico
+normal
 Eclipse Encantado

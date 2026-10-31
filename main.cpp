@@ -19,6 +19,8 @@ const string path = "./times/";
 vector <Galo> createTime(string nomeTime);
 int luta(Galo player1, Galo player2, vector <Armamento> armas);
 bool maldicaoDoGalo(vector <Galo> *timeAtacante, vector <Galo> *timeAtacado,  int index);
+bool galoJudas(vector <Galo> *timeAnterior, vector <Galo> *timeNovo,  int index);
+bool galoCovarde(vector <Galo> *timeAnterior,  int index);
 vector <Armamento> createArmamento(string nome);
 bool atribuirArma(vector <Armamento> armas, Galo player);
 bool quebrou(Galo player, vector <Armamento> armas);
@@ -45,20 +47,45 @@ int main()
 
     // LUTANDO
     while(time1.size() > 0 && time2.size() > 0){
-        int player0 = rand()%time1.size();
-        int player1 = rand()%time2.size();
+        bool auxLuta = true;
+        int player1 = rand()%time1.size();
+        int player2 = rand()%time2.size();
+        int result;
 
-        int result = luta(time1.at(player0), time2.at(player1), armas);
-
-        if(result == 1){
-            time2.erase(time2.begin() + player1);
-        } else {
-            time1.erase(time1.begin() + player0);
+        // funções especiais ded fuga e traicao
+        if (galoJudas(&time1, &time2, player1)){
+            cout << "O galo traiu o time!!"<< endl;
+            auxLuta = false;
+            result = 2;
+        }
+        if (galoCovarde(&time1, player1)){
+            cout << "O galo fugiu da luta!!"<< endl;
+            auxLuta = false;
+            result = 2;
+        }
+        if (galoJudas(&time2, &time1, player2)){
+            cout << "O galo traiu o time!!"<< endl;
+            auxLuta = false;
+            result = 1;
+        }
+        if (galoCovarde(&time2, player2)){
+            cout << "O galo fugiu da luta!!"<< endl;
+            auxLuta = false;
+            result = 1;
         }
 
-        maldicaoDoGalo(&time1, &time2, player0);
-        maldicaoDoGalo(&time2, &time1, player1);
+        if(auxLuta){result = luta(time1.at(player1), time2.at(player2), armas);} 
+
+        if(result == 1){
+            maldicaoDoGalo(&time2, &time1, player2);
+            time2.erase(time2.begin() + player2);
+        } else {
+            maldicaoDoGalo(&time1, &time2, player1);
+            time1.erase(time1.begin() + player1);
+        }
     }
+
+    cout << "LUTA FINALIZADA" << endl;
 
     // RESULTADO FINAL  
     if(time1.size() >= 1){
@@ -81,7 +108,7 @@ int main()
 vector <Galo> createTime(string nomeTime){
     vector <Galo> time;
     string arq = path + nomeTime + ".txt"; // caminho do arquivo no projeto
-    string line;
+    string line, tipo;
 
     cout << "Arq: "<< arq << endl;
 
@@ -97,8 +124,9 @@ vector <Galo> createTime(string nomeTime){
     // o professor anderson nos ensinou a fazer assim
     // lendo o arquivo
     while(!fp.eof()){
+        getline(fp, tipo);
         getline(fp, line);
-        Galo novo(line, rand()%100+1, rand()%15+1, rand()%20+1);
+        Galo novo(line, tipo, rand()%100+1, rand()%15+1, rand()%20+1);
         time.push_back(novo);
     }
 
@@ -120,6 +148,7 @@ int luta(Galo player1, Galo player2, vector <Armamento> armas){
     bool arma2 = atribuirArma(armas, player2);
 
     while(player1.GetLife() > 0 && player2.GetLife() > 0){
+
         // ataque do player1 no player2
         bool sucess = player1.Attack(player2, 0);
         if(sucess == true){
@@ -177,6 +206,8 @@ bool maldicaoDoGalo(vector <Galo> *timeAtacante, vector <Galo> *timeAtacado,  in
         do {
             indexVitima = rand()%timeAtacado->size();
         } while(inVector(atacados, indexVitima));
+
+        cout << "index: " << indexVitima << endl;
         
         atacados.push_back(indexVitima);
     }
@@ -190,6 +221,25 @@ bool maldicaoDoGalo(vector <Galo> *timeAtacante, vector <Galo> *timeAtacado,  in
     else{
         return false;
     }
+}
+
+bool galoJudas(vector <Galo> *timeAnterior, vector <Galo> *timeNovo,  int index){
+    if(timeAnterior->at(index).GaloJudas()){
+        timeNovo->push_back(timeAnterior->at(index));
+        timeAnterior->erase(timeAnterior->begin() + index);
+        return true;
+    }
+
+    return false;
+}
+
+bool galoCovarde(vector <Galo> *timeAnterior,  int index){
+    if(timeAnterior->at(index).GaloJudas()){
+        timeAnterior->erase(timeAnterior->begin() + index);
+        return true;
+    }
+
+    return false;
 }
 
 // ----------- FUNÇÕES DE ARMAMENTO ----------------
@@ -266,7 +316,7 @@ bool quebrou(Galo player, vector <Armamento> armas){
 
 // FUNÇÕES EXTRAS DE AUXILIO
 bool inVector(vector <int> vec, int value){
-    for(int i = 0; i < vec.size(); i++){
+    for(size_t i = 0; i < vec.size(); i++){
         if(vec.at(i) == value){
             return true;
         }
@@ -276,13 +326,8 @@ bool inVector(vector <int> vec, int value){
 
 /*
 TAREFAS 
-- arrumar o ataque
-- implementa o "herói"
-- precisão de ataque e defesa (quanto mais forte o galo, mais chance de acertar o ataque)
-- defesa e ataque com armas
-    - verificar se é arma ou escudo
-    - adicionar o poder ao ataque e depois aplicar a porcentagem (ou defesa)
-- implementar galo judas e galo covarde
+- implementa o "herói" (ler o aquivo corretamente) - (a madição do galo)
+- implementar galo judas e galo covarde - falta verificar em galo.hpp qual é o tipo
 - gravar o vídeo (e editar)
 */
 
