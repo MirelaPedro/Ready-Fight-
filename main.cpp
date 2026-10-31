@@ -8,11 +8,21 @@ Equipe:
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 #include "galo.hpp"
 
 using namespace std;
 
-const string path = "/times/";
+const string path = "./times/";
+
+vector <Galo> createTime(string nomeTime);
+int luta(Galo player1, Galo player2, vector <Armamento> armas);
+bool maldicaoDoGalo(vector <Galo> *timeAtacante, vector <Galo> *timeAtacado,  int index);
+vector <Armamento> createArmamento(string nome);
+Armamento atribuirArma(vector <Armamento> armas);
+bool quebrou(Armamento &arma, vector <Armamento> armas);
+bool inVector(vector <int> vec, int value);
 
 
 int main()
@@ -70,7 +80,10 @@ int main()
 // Leitura do arquivo de nomes
 vector <Galo> createTime(string nomeTime){
     vector <Galo> time;
-    string arq = path + nomeTime + ".txt", line; // caminho do arquivo no projeto
+    string arq = path + nomeTime + ".txt"; // caminho do arquivo no projeto
+    string line;
+
+    cout << "Arq: "<< arq << endl;
 
     // abrindo o arquivo
     ifstream fp;
@@ -83,7 +96,8 @@ vector <Galo> createTime(string nomeTime){
 
     // o professor anderson nos ensinou a fazer assim
     // lendo o arquivo
-    while(getline(fp, line)){
+    while(!fp.eof()){
+        getline(fp, line);
         Galo novo(line, rand()%100+1, rand()%15+1, rand()%20+1);
         time.push_back(novo);
     }
@@ -181,7 +195,8 @@ bool maldicaoDoGalo(vector <Galo> *timeAtacante, vector <Galo> *timeAtacado,  in
 // lendo o arquivo de armas
 vector <Armamento> createArmamento(string nome){
     vector <Armamento> armas;
-    string arq = nome + ".txt", line;
+    string arq = nome + ".txt";
+    string line, type;
 
     // abrindo o arquivo
     ifstream fp;
@@ -193,18 +208,24 @@ vector <Armamento> createArmamento(string nome){
     }
 
     // lendo o arquivo
-    while(getline(fp, line)){
-        Armamento arma;
-        arma.SetName(line);
+    /*
+    tipo do arma
+    nome da arma
+    tipo da arma
+    nome da arma..
+    */
+    while(!fp.eof()){
+        getline(fp, type);
         getline(fp, line);
-        arma.SetTipe(line);
-        getline(fp, line);
-        arma.SetPower(stof(line)); // arrumar isso depois
-        armas.push_back(arma);
+        cout << "line: " << line << endl;
+        Armamento novo(line, type, rand()%20+1);
+        armas.push_back(novo);
     }
+    cout << "saiu do while. " << endl;
 
     fp.close();
     return armas;
+    cout << "fechou arquivo " << endl;
 }
 
 // atribuição

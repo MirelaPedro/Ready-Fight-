@@ -1,40 +1,80 @@
+escudo
 Escudo da Crista Soberana
+arma
 Punhal do Ovo Negro
+arma
 Esporas da Meia-Noite
+escudo
 Égide do Galo Rubro
+escudo
 Muralha das Mil Penas
+escudo
 Broquel do Canto Eterno
+escudo
 Muralha do Cacarejo Abissal
+escudo
 Escudo do Campeão do Poleiro
+escudo
 Égide do Sangue Arcano
+escudo
 Escudo do Poleiro Celestial
+escudo
 Escudo da Tempestade de Plumas
+arma
 O Gume do Rei Galináceo
+arma
 Lança do Poleiro Profano
+arma
 Tridente das Três Cristas
+arma
 Esporão do Trovão
+arma
 A Bicada do Vazio
+arma
 Foice das Penas Perdidas
+arma
 Garras do Garnisé Rei
+arma
 Adagas da Dança Plumífera
+escudo
 Broquel da Pena Imortal
+escudo
 Couraça do Rei Ciscador
+escudo
 Égide do Sol Galopante
+escudo
 Escudo do Último Cacarejo
+escudo
 Broquel das Garras Guardiãs
+escudo
 Muralha do Imperador Penoso
+escudo
 Escudo da Lua Depenada
+escudo
 Égide do Ovo Primordial
+arma
 Crista-Cortante
+arma
 A Bicada Carmesim
+arma
 Lâmina do Cacarejo Final
+arma
 Espora de Sangue-Estelar
+escudo
 Escudo da Aurora Galinácea
+escudo
 Escudo das Sete Cristas
+escudo
 Broquel do Caos Garnisé
+arma
 A Ruptura da Casca Celeste
+arma
 Martelo do Cacarejo Sísmico
+arma
 Machado da Crista Flamejante
+arma
 Arco das Penas Fantasma
+arma
 Cajado do Galinheiro Astral
+arma
 O Despertar do Galo Primordial

@@ -4,6 +4,59 @@
 
 using namespace std;
 
+class Armamento {
+    private:
+        string m_name;
+        /*Ataque ou defesa*/
+        string m_tipe; 
+        float m_power;
+
+    public: 
+        string GetName() {
+            return m_name;
+        }
+        string GetTipe() {
+            return m_tipe;
+        }
+        float GetPower() {
+            return m_power;
+        }
+
+        void SetName(string newName) {
+            m_name = newName;
+        }
+        void SetTipe(string newTipe) {
+            m_tipe = newTipe;
+        }
+        void SetPower(float newPower){
+            m_power = newPower;
+        }
+
+        Armamento() {
+            m_name = "Sem arma";
+            m_tipe = "Na fé e na coragem";
+            m_power = 0;
+        }
+        Armamento(string name, string tipe, float power) {
+            m_name = name;
+            m_tipe = tipe;
+            m_power = power;
+        }
+
+        /*Existe 40% de chance da arma quebrar após cada uso*/
+        bool BreakWeapon() {
+            srand(time(0));
+            int chance = rand() % 25;
+            if(chance > 25) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+};
+
 class Galo {
     private: 
         string m_name;
@@ -64,7 +117,7 @@ class Galo {
             if (m_tipe == "Heroi") {
                 srand(time(0));
                 int ataque = rand() % 4;
-                cout << "Ataque utilizado: " << AtaquesDiferenciados[ataque].first << endl << "Precisão do ataque: " << AtaquesDiferenciados[ataque].second << "%" << endl;
+                cout << "Ataque utilizado: " << AtaquesDiferenciados[ataque].first << " - " << "Precisão do ataque: " << AtaquesDiferenciados[ataque].second << "%" << endl;
                 
             }
             else {
@@ -127,55 +180,3 @@ class Galo {
 
 };
 
-class Armamento {
-    private:
-        string m_name;
-        /*Ataque ou defesa*/
-        string m_tipe; 
-        float m_power;
-
-    public: 
-        string GetName() {
-            return m_name;
-        }
-        string GetTipe() {
-            return m_tipe;
-        }
-        float GetPower() {
-            return m_power;
-        }
-
-        void SetName(string newName) {
-            m_name = newName;
-        }
-        void SetTipe(string newTipe) {
-            m_tipe = newTipe;
-        }
-        void SetPower(float newPower){
-            m_power = newPower;
-        }
-
-        Armamento() {
-            m_name = "Sem arma";
-            m_tipe = "Na fé e na coragem";
-            m_power = 0;
-        }
-        Armamento(string name, string tipe, float power) {
-            m_name = name;
-            m_tipe = tipe;
-            m_power = power;
-        }
-
-        /*Existe 40% de chance da arma quebrar após cada uso*/
-        bool BreakWeapon() {
-            srand(time(0));
-            int chance = rand() % 25;
-            if(chance > 25) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-
-};
