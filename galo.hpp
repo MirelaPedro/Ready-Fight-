@@ -66,7 +66,7 @@ class Galo {
         void SetArma(Armamento arma) { m_arma = arma; }
 
         bool Attack(Galo &opponent, int adicional) {
-            int ataqueTotal, defesaTotal;
+            float ataqueTotal, defesaTotal;
             array <pair<string, int>, 4> AtaquesUsados;
             /*Tipos de ataques diferentes com precisões de ataque diferentes*/
             array <pair<string, int>, 4> Ataques = {{
@@ -91,11 +91,21 @@ class Galo {
             cout << "Ataque utilizado: " << Ataques[ataque].first << " - " << "Precisão do ataque: " << Ataques[ataque].second << "%" << endl;
 
             //premissa 2: adicionar os booster de ataque ou defesa 
+            if(m_arma.GetTipe() == "arma"){ataqueTotal = m_attack + m_arma.GetPower();}
+            else{ataqueTotal = m_attack;}
+
+            if(opponent.GetTipe() == "escudo"){defesaTotal = m_defense + m_arma.GetPower();}
+            else{defesaTotal = m_defense;}
+
+            //precisao de ataque e defesa
+            ataqueTotal = ataqueTotal*Ataques[ataque].second/100;
+            defesaTotal = defesaTotal*rand()/100/100;
+            
 
             //premissa 3: verificar se o ataque do galo é maior que a defesa do oponente
-            if (m_attack > opponent.m_defense) {
+            if (ataqueTotal > defesaTotal) {
                 //premissa 4: subtrair o dano (ataque - defesa) da vida do oponente
-                float damage = m_attack - opponent.m_defense;
+                float damage = ataqueTotal - defesaTotal;
                 opponent.SetLife(opponent.GetLife() - damage); 
                 return true;               
             }

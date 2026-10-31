@@ -282,7 +282,6 @@ TAREFAS
 - defesa e ataque com armas
     - verificar se é arma ou escudo
     - adicionar o poder ao ataque e depois aplicar a porcentagem (ou defesa)
-    - mudar temporariamente os atributos de ataque e defesa (facilita a vida)
 - implementar galo judas e galo covarde
 - gravar o vídeo (e editar)
 */
