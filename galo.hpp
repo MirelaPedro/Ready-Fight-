@@ -33,8 +33,8 @@ class Armamento {
 
         /*Existe 40% de chance da arma quebrar após cada uso*/
         bool BreakWeapon() {
-            int chance = rand() % 25;
-            if(chance > 25) { return true; }
+            int chance = rand() % 100;
+            if(chance < 40) { return true; }
             else { return false; }
         }
 };
@@ -43,7 +43,7 @@ class Galo {
     private: 
         string m_name;
         float m_life, m_attack, m_defense;
-        /*Heroi, Traidor ou Covarde*/
+        /*heroi, traidor ou covarde*/
         string m_tipe;
         Armamento m_arma;
     
@@ -71,10 +71,10 @@ class Galo {
             array <pair<string, int>, 4> AtaquesUsados;
             /*Tipos de ataques diferentes com precisões de ataque diferentes*/
             array <pair<string, int>, 4> Ataques = {{
-                {"Bicada", 70},
-                {"Arranhão", 45},
-                {"Batida de Asa", 30},
-                {"Investida", 60}
+                {"Bicada", 80},
+                {"Arranhão", 70},
+                {"Batida de Asa", 65},
+                {"Investida", 75}
             }};
             /*Ataques específicos para galos Heróis*/
             array <pair<string, int>, 4> AtaquesDiferenciados = {{
@@ -85,7 +85,7 @@ class Galo {
             }};
 
             //premissa 1: verificar se o galo é Herói ou não para decidir o tipo de ataque utilizado
-            if (m_tipe == "Heroi") { AtaquesUsados = AtaquesDiferenciados; }
+            if (m_tipe == "heroi") { AtaquesUsados = AtaquesDiferenciados; }
             else { AtaquesUsados = Ataques; }
 
             int ataque = rand() % 4;
@@ -117,38 +117,48 @@ class Galo {
 
         /*Ataque crítico reservado apenas para Heróis*/
         bool MaldicaoDoGalo(vector <Galo> *timeAtacante, vector <int> Vitimas) {
-            if(m_tipe == "Heroi") {
+            if(m_tipe == "heroi") {
 
-                int chance = rand() % 60;
-                if(chance > 60) { 
+                int chance = rand() % 100;
+                if(chance < 100) { 
                         return true;
                 }
                 else {
                     return false;
                 }
             }
+
+            else { return false; }
         }
         
-        /*Fuga do Covarde*/
+        /*Fuga do covarde*/
         bool FugaDasGalinhas() {
-            int chance = rand() % 40;
-            if(chance > 40) { 
-                return true;
+            if(m_tipe == "covarde"){
+
+                int chance = rand() % 100;
+                if(chance < 100) { 
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
-            else {
-                return false;
-            }
+
+            else { return false;}
         }
 
-        /*Traição do galo Traidor*/
+        /*Traição do galo traidor*/
         bool GaloJudas() {
-            int chance = rand() % 40;
-            if(chance > 40) { 
-                return true;
+            if(m_tipe == "judas") {
+                int chance = rand() % 100;
+                if(chance < 100) { 
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
-            else {
-                return false;
-            }
+
+            else { return false; }
         }
 };
-
