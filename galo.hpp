@@ -12,25 +12,13 @@ class Armamento {
         float m_power;
 
     public: 
-        string GetName() {
-            return m_name;
-        }
-        string GetTipe() {
-            return m_tipe;
-        }
-        float GetPower() {
-            return m_power;
-        }
+        string GetName() { return m_name; }
+        string GetTipe() { return m_tipe; }
+        float GetPower() { return m_power; }
 
-        void SetName(string newName) {
-            m_name = newName;
-        }
-        void SetTipe(string newTipe) {
-            m_tipe = newTipe;
-        }
-        void SetPower(float newPower){
-            m_power = newPower;
-        }
+        void SetName(string newName) { m_name = newName; }
+        void SetTipe(string newTipe) { m_tipe = newTipe; }
+        void SetPower(float newPower){ m_power = newPower; }
 
         Armamento() {
             m_name = "Sem arma";
@@ -45,16 +33,10 @@ class Armamento {
 
         /*Existe 40% de chance da arma quebrar após cada uso*/
         bool BreakWeapon() {
-            srand(time(0));
             int chance = rand() % 25;
-            if(chance > 25) {
-                return true;
-            }
-            else {
-                return false;
-            }
+            if(chance > 25) { return true; }
+            else { return false; }
         }
-
 };
 
 class Galo {
@@ -63,6 +45,7 @@ class Galo {
         float m_life, m_attack, m_defense;
         /*Heroi, Traidor ou Covarde*/
         string m_tipe;
+        Armamento m_arma;
     
     public:         
         Galo(string name, float life, float attack, float defense) {
@@ -72,29 +55,19 @@ class Galo {
             m_defense = defense;
         }
 
-        string GetName() {
-            return m_name;
-        }
-        string GetTipe() {
-            return m_tipe;
-        }
-        float GetLife() {
-            return m_life;
-        }
+        string GetName() { return m_name; }
+        string GetTipe() { return m_tipe; }
+        float GetLife() { return m_life; }
+        float GetAttack() { return m_attack; }
+        float GetDefense() { return m_defense; }
+        Armamento GetArma() { return m_arma; }
 
-        float GetAttack() {
-            return m_attack;
-        }
+        void SetLife(float newLife) { m_life = newLife; }
+        void SetArma(Armamento arma) { m_arma = arma; }
 
-        float GetDefense() {
-            return m_defense;
-        }
-
-        void SetLife(float newLife) {
-            m_life = newLife;
-        }
-
-        bool Attack(Galo &opponent, Armamento &arma, int adicional) {
+        bool Attack(Galo &opponent, int adicional) {
+            int ataqueTotal, defesaTotal;
+            array <pair<string, int>, 4> AtaquesUsados;
             /*Tipos de ataques diferentes com precisões de ataque diferentes*/
             array <pair<string, int>, 4> Ataques = {{
                 {"Bicada", 70},
@@ -109,22 +82,13 @@ class Galo {
                 {"Batida de Asa Lendária", 100},
                 {"Investida Suprema", 100}
             }};
-            
-            /*
-            */
 
             //premissa 1: verificar se o galo é Herói ou não para decidir o tipo de ataque utilizado
-            if (m_tipe == "Heroi") {
-                srand(time(0));
-                int ataque = rand() % 4;
-                cout << "Ataque utilizado: " << AtaquesDiferenciados[ataque].first << " - " << "Precisão do ataque: " << AtaquesDiferenciados[ataque].second << "%" << endl;
-                
-            }
-            else {
-                srand(time(0));
-                int ataque = rand() % 4;
-                cout << "Ataque utilizado: " << Ataques[ataque].first << endl << "Precisão do ataque: " << Ataques[ataque].second << "%" << endl;
-            }
+            if (m_tipe == "Heroi") { AtaquesUsados = AtaquesDiferenciados; }
+            else { AtaquesUsados = Ataques; }
+
+            int ataque = rand() % 4;
+            cout << "Ataque utilizado: " << Ataques[ataque].first << " - " << "Precisão do ataque: " << Ataques[ataque].second << "%" << endl;
 
             //premissa 2: adicionar os booster de ataque ou defesa 
 
@@ -132,7 +96,8 @@ class Galo {
             if (m_attack > opponent.m_defense) {
                 //premissa 4: subtrair o dano (ataque - defesa) da vida do oponente
                 float damage = m_attack - opponent.m_defense;
-                opponent.SetLife(opponent.GetLife() - damage);                
+                opponent.SetLife(opponent.GetLife() - damage); 
+                return true;               
             }
             else {
                 return false;
@@ -142,20 +107,19 @@ class Galo {
         /*Ataque crítico reservado apenas para Heróis*/
         bool MaldicaoDoGalo(vector <Galo> *timeAtacante,vector <int> Vitimas) {
             if(m_tipe == "Heroi") {
-                srand(time(0));
+
                 int chance = rand() % 60;
                 if(chance > 60) { 
                         return true;
                 }
-                    else {
-                        return false;
-                    }
+                else {
+                    return false;
+                }
             }
         }
         
         /*Fuga do Covarde*/
         bool FugaDasGalinhas() {
-            srand(time(0));
             int chance = rand() % 40;
             if(chance > 40) { 
                 return true;
@@ -167,7 +131,6 @@ class Galo {
 
         /*Traição do galo Traidor*/
         bool GaloJudas() {
-            srand(time(0));
             int chance = rand() % 40;
             if(chance > 40) { 
                 return true;
@@ -176,7 +139,5 @@ class Galo {
                 return false;
             }
         }
-
-
 };
 

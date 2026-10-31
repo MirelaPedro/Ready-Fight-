@@ -20,8 +20,8 @@ vector <Galo> createTime(string nomeTime);
 int luta(Galo player1, Galo player2, vector <Armamento> armas);
 bool maldicaoDoGalo(vector <Galo> *timeAtacante, vector <Galo> *timeAtacado,  int index);
 vector <Armamento> createArmamento(string nome);
-Armamento atribuirArma(vector <Armamento> armas);
-bool quebrou(Armamento &arma, vector <Armamento> armas);
+bool atribuirArma(vector <Armamento> armas, Galo player);
+bool quebrou(Galo player, vector <Armamento> armas);
 bool inVector(vector <int> vec, int value);
 
 
@@ -112,15 +112,16 @@ sitema de LUTA:
 retorno: 
 1 - para o jogador 1 ganhou 
 2 - para o jogador 2 ganhou
+o segundo jogador tem um adicional de 2 no ataque por começar depois
 */
 int luta(Galo player1, Galo player2, vector <Armamento> armas){
     // atribuição de armas aos galos
-    Armamento arma1 = atribuirArma(armas);
-    Armamento arma2 = atribuirArma(armas);
+    bool arma1 = atribuirArma(armas, player1);
+    bool arma2 = atribuirArma(armas, player2);
 
     while(player1.GetLife() > 0 && player2.GetLife() > 0){
         // ataque do player1 no player2
-        bool sucess = player1.Attack(player2, arma1, 0);
+        bool sucess = player1.Attack(player2, 0);
         if(sucess == true){
             cout << player1.GetName() << " atacou " << player2.GetName() << endl;
             cout << player2.GetName() << " perdeu " << (player1.GetAttack() - player2.GetDefense()) << " de vida!" << endl;
@@ -133,13 +134,13 @@ int luta(Galo player1, Galo player2, vector <Armamento> armas){
         // verificando se o player2 morreu
         if(player2.GetLife() <= 0){
             cout << player2.GetName() << " morreu!" << endl;
-            quebrou(arma2, armas);
-            quebrou(arma1, armas);
+            quebrou(player1, armas);
+            quebrou(player2, armas);
             return 1;
         }
 
         // ataque do player2 no player1
-        sucess = player2.Attack(player1, arma2, 2); // esse 5 é um adicional de ataque que o player2 tem por ser o segundo a atacar
+        sucess = player2.Attack(player1, 2); // esse 2 é um adicional de ataque que o player2 tem por ser o segundo a atacar
         if(sucess == true){
             cout << player2.GetName() << " atacou " << player1.GetName() << endl;
             cout << player1.GetName() << " perdeu " << (player2.GetAttack() - player1.GetDefense()) << " de vida!" << endl;
@@ -152,8 +153,8 @@ int luta(Galo player1, Galo player2, vector <Armamento> armas){
         // verificando se o player1 morreu
         if(player1.GetLife() <= 0){
             cout << player1.GetName() << " morreu!" << endl;
-            quebrou(arma2, armas);
-            quebrou(arma1, armas);
+            quebrou(player1, armas);
+            quebrou(player2, armas);
             return 2;
         }
     }
@@ -229,29 +230,31 @@ vector <Armamento> createArmamento(string nome){
 }
 
 // atribuição
-Armamento atribuirArma(vector <Armamento> armas){
+bool atribuirArma(vector <Armamento> armas, Galo player){
     if(armas.size() == 0){
-        return Armamento();
+        return false;
     }
 
     if(rand()%100 < 70){
         int index = rand()%armas.size();
-        return armas.at(index);
+        player.SetArma(armas.at(index));
+        return true;
     }
     else{
-        return Armamento();
+        return false;
     }    
 }
 
 // se quebrou ou nao
-bool quebrou(Armamento &arma, vector <Armamento> armas){
-    if(arma.BreakWeapon()){
-        cout << "A arma " << arma.GetName() << " quebrou!" << endl;
+bool quebrou(Galo player, vector <Armamento> armas){
+    if(player.GetArma().BreakWeapon()){
+        cout << "A arma " << player.GetArma().GetName() << " quebrou!" << endl;
 
         // percorrendo o vetor de armas para remover a arma quebrada pelo nome
         for(size_t i = 0; i < armas.size(); i++){
-            if(armas.at(i).GetName() == arma.GetName()){ // as armas não possuem nomes repitidos;
+            if(armas.at(i).GetName() == player.GetArma().GetName()){ // as armas não possuem nomes repitidos;
                 armas.erase(armas.begin() + i);
+                player.SetArma(Armamento());
                 return true;
             }
         }
@@ -272,33 +275,15 @@ bool inVector(vector <int> vec, int value){
 }
 
 /*
-
 TAREFAS 
-CRIAR SISTEMA DE PRECISAO DE ATAQUE E DEFESA (ASSIM GALOS FRACOS PODEM GANHAR TB)
-- criar arquivos txt (nomes e armamento) - okk
-- classes com atributos e protótipos de função - player(galo), armas
-- funções (aplicações) das classes
-- funções de luta - ok
-- main -- okk
-- pegar uma arma ou escudo antes da partida -- ok
-- menu e respostas ao usuário - ok
-- tratamento de erro e testes
-- poderes diferenciados (bicada fatal) -- okk
-- ataques críticos aleatórios - maldição do galo -- ok
-- MUDAR TUDO PARA PONTERIRO 
-
-- chance da arma se quebrar no fim de cada rodada -- okk 
-- escrever todas as mecanicas do jogo no readme
-- criar precisão de defesa
-- traidor e covarde
-- bet com moedinhas mágicas 
-- colocar contagem de quantos galos ainda estão vivos no momento do jogo
-- colocar um aviso no inicio do jogo: " Este jogo é apenas para fins de entretenimento, não é recomendado apostar dinheiro real. E nem apoia maus tratos a animais, o jogo é apenas uma simulação de rinha de galos MÁGICA, não é real. Jogue com moderação."
-
-
-// não precisa po r enquanto
+- arrumar o ataque
+- implementa o "herói"
 - precisão de ataque e defesa (quanto mais forte o galo, mais chance de acertar o ataque)
-- 
+- defesa e ataque com armas
+    - verificar se é arma ou escudo
+    - adicionar o poder ao ataque e depois aplicar a porcentagem (ou defesa)
+    - mudar temporariamente os atributos de ataque e defesa (facilita a vida)
+- implementar galo judas e galo covarde
 - gravar o vídeo (e editar)
 */
 
