@@ -18,13 +18,13 @@ using namespace std;
 const string path = "./times/";
 
 vector <Galo> createTime(string nomeTime);
-int luta(Galo player1, Galo player2, vector <Armamento> armas);
+int luta(Galo &player1, Galo &player2, vector <Armamento> &armas);
 bool maldicaoDoGalo(vector <Galo> *timeAtacante, vector <Galo> *timeAtacado,  int index);
 bool galoJudas(vector <Galo> *timeAnterior, vector <Galo> *timeNovo,  int index);
 bool galoCovarde(vector <Galo> *timeAnterior,  int index);
 vector <Armamento> createArmamento(string nome);
-bool atribuirArma(vector <Armamento> armas, Galo player);
-bool quebrou(Galo player, vector <Armamento> armas);
+bool atribuirArma(vector <Armamento> &armas, Galo &player);
+bool quebrou(Galo &player, vector <Armamento> &armas);
 bool inVector(vector <int> vec, int value);
 
 
@@ -49,34 +49,28 @@ int main()
 
     // LUTANDO
     while(time1.size() > 0 && time2.size() > 0){
-        bool auxLuta = true;
         int player1 = rand()%time1.size();
         int player2 = rand()%time2.size();
-        int result;
 
-        // funções especiais de fuga e traicao
-        if (galoJudas(&time1, &time2, player1)){
-            cout << "O galo traiu o time!!"<< endl;
-            auxLuta = false;
-            result = 2;
+       // funções especiais de fuga e traicao
+        if (galoJudas(&time1, &time2, player1)) {
+            cout << "O galo traiu o time!!" << endl; 
+            continue;
         }
-        if (galoCovarde(&time1, player1)){
-            cout << "O galo fugiu da luta!!"<< endl;
-            auxLuta = false;
-            result = 2;
+        if (galoCovarde(&time1, player1)) {
+            cout << "O galo fugiu da luta!!" << endl; 
+            continue;
         }
-        if (galoJudas(&time2, &time1, player2)){
-            cout << "O galo traiu o time!!"<< endl;
-            auxLuta = false;
-            result = 1;
+        if (galoJudas(&time2, &time1, player2)) {
+            cout << "O galo traiu o time!!" << endl;
+            continue;
         }
-        if (galoCovarde(&time2, player2)){
-            cout << "O galo fugiu da luta!!"<< endl;
-            auxLuta = false;
-            result = 1;
+        if (galoCovarde(&time2, player2)) {
+            cout << "O galo fugiu da luta!!" << endl;
+            continue;
         }
 
-        if(auxLuta){result = luta(time1.at(player1), time2.at(player2), armas);} 
+        int result = luta(time1.at(player1), time2.at(player2), armas);
 
         if(result == 1){
             maldicaoDoGalo(&time2, &time1, player2);
@@ -95,11 +89,15 @@ int main()
         for(int i = 0; i < time1.size(); i++){
             cout << " - " << time1.at(i).GetName() << endl;
         }
-    } else {
+    } 
+    else if(time2.size() >= 1) {
         cout << "TIME VENCEDOR: " << nomeTime2  << endl;
         for(int i = 0; i < time2.size(); i++){
             cout << " - " << time2.at(i).GetName() << endl;
         }
+    }
+    else {
+        cout << "Não houveram vencedores!" << endl;
     }
 
     return 0;
@@ -142,7 +140,7 @@ retorno:
 2 - para o jogador 2 ganhou
 o segundo jogador tem um adicional de 2 no ataque por começar depois
 */
-int luta(Galo player1, Galo player2, vector <Armamento> armas){
+int luta(Galo &player1, Galo &player2, vector <Armamento> &armas){
     // atribuição de armas aos galos
     bool arma1 = atribuirArma(armas, player1);
     bool arma2 = atribuirArma(armas, player2);
@@ -236,7 +234,7 @@ bool galoJudas(vector <Galo> *timeAnterior, vector <Galo> *timeNovo,  int index)
 }
 
 bool galoCovarde(vector <Galo> *timeAnterior,  int index){
-    if(timeAnterior->at(index).GaloJudas()){
+    if(timeAnterior->at(index).FugaDasGalinhas()){
         timeAnterior->erase(timeAnterior->begin() + index);
         return true;
     }
@@ -281,8 +279,8 @@ vector <Armamento> createArmamento(string nome){
 }
 
 // atribuição
-bool atribuirArma(vector <Armamento> armas, Galo player){
-    if(armas.size() == 0){
+bool atribuirArma(vector <Armamento> &armas, Galo &player){
+        if(armas.size() == 0){
         return false;
     }
 
@@ -298,7 +296,7 @@ bool atribuirArma(vector <Armamento> armas, Galo player){
 }
 
 // se quebrou ou nao
-bool quebrou(Galo player, vector <Armamento> armas){
+bool quebrou(Galo &player, vector <Armamento> &armas){
     if(player.GetArma().BreakWeapon()){
         //verificar se o galo tem uma arma para ser quebrada
         if (player.GetArma().GetName() != "Sem arma") {

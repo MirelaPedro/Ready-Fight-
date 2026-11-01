@@ -120,7 +120,7 @@ class Galo {
             if(m_tipe == "heroi") {
 
                 int chance = rand() % 100;
-                if(chance < 100) { 
+                if(chance < 60) { 
                         return true;
                 }
                 else {
@@ -136,7 +136,7 @@ class Galo {
             if(m_tipe == "covarde"){
 
                 int chance = rand() % 100;
-                if(chance < 100) { 
+                if(chance < 60) { 
                     return true;
                 }
                 else {
@@ -151,7 +151,7 @@ class Galo {
         bool GaloJudas() {
             if(m_tipe == "judas") {
                 int chance = rand() % 100;
-                if(chance < 100) { 
+                if(chance < 60) { 
                     return true;
                 }
                 else {
